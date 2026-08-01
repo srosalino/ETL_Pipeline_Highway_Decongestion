@@ -56,7 +56,7 @@ dag = DAG(
     dag_id="ETL_toll_data",
     default_args=default_args,
     description="ETL Pipeline for Highway Decongestion",
-    schedule_interval="@daily",
+    schedule=None,
 )
 
 
@@ -68,7 +68,8 @@ DATASET_URL = (
     "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Final%20Assignment/tolldata.tgz"
 )
 
-STAGING_DIR = Path("/home/project/airflow/dags/etl_highway_decongestion/staging")
+DAG_DIR = Path(__file__).resolve().parent
+STAGING_DIR = DAG_DIR / "staging"
 
 DESTINATION_PATH = STAGING_DIR / "tolldata.tgz"
 
@@ -428,16 +429,19 @@ with TaskGroup(
     extract_data_from_csv_task = PythonOperator(
         task_id="extract_data_from_csv",
         python_callable=extract_data_from_csv,
+        dag=dag
     )
 
     extract_data_from_tsv_task = PythonOperator(
         task_id="extract_data_from_tsv",
         python_callable=extract_data_from_tsv,
+        dag=dag
     )
 
     extract_data_from_fixed_width_task = PythonOperator(
         task_id="extract_data_from_fixed_width",
         python_callable=extract_data_from_fixed_width,
+        dag=dag
     )
 
 consolidate_data_task = PythonOperator(
