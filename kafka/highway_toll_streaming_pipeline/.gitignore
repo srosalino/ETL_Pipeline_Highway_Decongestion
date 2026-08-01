@@ -1,0 +1,20 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Kafka downloads and runtime data
+kafka_*/
+*.tgz
+kraft-combined-logs/
+kafka-logs/
+*.log
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
