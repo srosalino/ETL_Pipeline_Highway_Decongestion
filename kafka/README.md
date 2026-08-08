@@ -388,38 +388,3 @@ Exit MySQL with:
 ```sql
 EXIT;
 ```
-
----
-
-# Restarting the Application
-
-For normal subsequent runs, Kafka does not need to be reinstalled and the MySQL schema does not need to be recreated.
-
-Start the existing MySQL container if necessary:
-
-```bash
-docker start toll-mysql
-```
-
-Then, in the first Git Bash terminal:
-
-```bash
-./scripts/initialize_kafka.sh
-```
-
-Keep Kafka running.
-
-In a second Git Bash terminal:
-
-```bash
-./scripts/run_pipeline.sh
-```
-
-Therefore, the normal startup workflow after the initial installation is:
-
-```text
-1. Start Docker Desktop
-2. Start toll-mysql
-3. Start Kafka
-4. Run the streaming pipeline
-```
