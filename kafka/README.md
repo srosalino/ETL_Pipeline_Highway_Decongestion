@@ -255,6 +255,18 @@ mkdir -p kafka-data
 
 ## 7. Initialize and start Kafka
 
+### Configure Log4j for Git Bash on Windows
+
+When Kafka is launched from Git Bash on Windows, Kafka may incorrectly resolve the path to its `log4j.properties` configuration file.
+
+Set the Log4j configuration explicitly:
+
+```bash
+export KAFKA_LOG4J_OPTS="-Dlog4j.configuration=file:///$(pwd)/tools/kafka_2.12-3.7.0/config/log4j.properties"
+```
+
+This tells Kafka explicitly where its Log4j configuration file is located.
+
 Run:
 
 ```bash
