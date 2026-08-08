@@ -233,7 +233,7 @@ In:
 tools/kafka_2.12-3.7.0/config/kraft/server.properties
 ```
 
-configure `log.dirs` to point to the project's `kafka-data` directory using an absolute Windows path.
+Configure `log.dirs` to point to the project's `kafka-data` directory using an absolute Windows path.
 
 For example:
 
@@ -249,7 +249,7 @@ Create the directory if necessary:
 mkdir -p kafka-data
 ```
 
-`kafka-data/` contains Kafka's runtime state, including topic partitions, consumer offsets, and KRaft metadata. It should not be committed to Git.
+`kafka-data/` will contain Kafka's runtime state, including topic partitions, consumer offsets, and KRaft metadata. It should not be committed to Git.
 
 ---
 
